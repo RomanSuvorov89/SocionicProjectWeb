@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SocionicProjectWeb.Models;
 
 namespace SocionicProjectWeb.Controllers
 {
@@ -25,6 +27,25 @@ namespace SocionicProjectWeb.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Result(int[] arrayAnswers, int[] answers, string dateObj)
+        {
+            var answerBools = answers.Select(i => i != 0).ToArray();
+            using (SocionicEngine socionicEngine = new SocionicEngine())
+            {
+                socionicEngine.SaveToDB(arrayAnswers, answerBools, dateObj);
+            }
+            return RedirectToAction("SecretPage");
+        }
+
+        public ActionResult SecretPage()
+        {
+            SocionicEntities db = new SocionicEntities();
+            
+                return View(db.Results.ToList());
+            
         }
     }
 }

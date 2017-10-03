@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SocionicModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnswerTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Answer1" Type="bit" Nullable="false" />
+          <Property Name="Answer2" Type="bit" Nullable="false" />
+          <Property Name="Answer3" Type="bit" Nullable="false" />
+          <Property Name="Answer4" Type="bit" Nullable="false" />
+          <Property Name="Answer5" Type="bit" Nullable="false" />
+          <Property Name="Answer6" Type="bit" Nullable="false" />
+          <Property Name="Answer7" Type="bit" Nullable="false" />
+          <Property Name="Answer8" Type="bit" Nullable="false" />
+          <Property Name="Answer9" Type="bit" Nullable="false" />
+          <Property Name="Answer10" Type="bit" Nullable="false" />
+          <Property Name="Answer11" Type="bit" Nullable="false" />
+          <Property Name="Answer12" Type="bit" Nullable="false" />
+          <Property Name="Answer13" Type="bit" Nullable="false" />
+          <Property Name="Answer14" Type="bit" Nullable="false" />
+          <Property Name="Answer15" Type="bit" Nullable="false" />
+          <Property Name="Answer16" Type="bit" Nullable="false" />
+          <Property Name="Answer17" Type="bit" Nullable="false" />
+          <Property Name="Answer18" Type="bit" Nullable="false" />
+          <Property Name="Answer19" Type="bit" Nullable="false" />
+          <Property Name="Answer20" Type="bit" Nullable="false" />
+          <Property Name="Answer21" Type="bit" Nullable="false" />
+          <Property Name="Answer22" Type="bit" Nullable="false" />
+          <Property Name="Answer23" Type="bit" Nullable="false" />
+          <Property Name="Answer24" Type="bit" Nullable="false" />
+          <Property Name="Answer25" Type="bit" Nullable="false" />
+          <Property Name="Answer26" Type="bit" Nullable="false" />
+          <Property Name="Answer27" Type="bit" Nullable="false" />
+          <Property Name="Answer28" Type="bit" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PCName" Type="varchar" MaxLength="50" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" />
+          <Property Name="TimeData" Type="varchar" MaxLength="50" />
+          <Property Name="Result" Type="varchar" MaxLength="50" />
+          <Property Name="MassiveAnswers" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AnswerTable_Results">
+          <End Role="Results" Type="Self.Results" Multiplicity="1" />
+          <End Role="AnswerTable" Type="Self.AnswerTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Results">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AnswerTable">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SocionicModelContainer">
+          <EntitySet Name="AnswerTable" EntityType="Self.AnswerTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AnswerTable_Results" Association="Self.FK_AnswerTable_Results">
+            <End Role="Results" EntitySet="Results" />
+            <End Role="AnswerTable" EntitySet="AnswerTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SocionicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AnswerTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Answer1" Type="Boolean" Nullable="false" />
+          <Property Name="Answer2" Type="Boolean" Nullable="false" />
+          <Property Name="Answer3" Type="Boolean" Nullable="false" />
+          <Property Name="Answer4" Type="Boolean" Nullable="false" />
+          <Property Name="Answer5" Type="Boolean" Nullable="false" />
+          <Property Name="Answer6" Type="Boolean" Nullable="false" />
+          <Property Name="Answer7" Type="Boolean" Nullable="false" />
+          <Property Name="Answer8" Type="Boolean" Nullable="false" />
+          <Property Name="Answer9" Type="Boolean" Nullable="false" />
+          <Property Name="Answer10" Type="Boolean" Nullable="false" />
+          <Property Name="Answer11" Type="Boolean" Nullable="false" />
+          <Property Name="Answer12" Type="Boolean" Nullable="false" />
+          <Property Name="Answer13" Type="Boolean" Nullable="false" />
+          <Property Name="Answer14" Type="Boolean" Nullable="false" />
+          <Property Name="Answer15" Type="Boolean" Nullable="false" />
+          <Property Name="Answer16" Type="Boolean" Nullable="false" />
+          <Property Name="Answer17" Type="Boolean" Nullable="false" />
+          <Property Name="Answer18" Type="Boolean" Nullable="false" />
+          <Property Name="Answer19" Type="Boolean" Nullable="false" />
+          <Property Name="Answer20" Type="Boolean" Nullable="false" />
+          <Property Name="Answer21" Type="Boolean" Nullable="false" />
+          <Property Name="Answer22" Type="Boolean" Nullable="false" />
+          <Property Name="Answer23" Type="Boolean" Nullable="false" />
+          <Property Name="Answer24" Type="Boolean" Nullable="false" />
+          <Property Name="Answer25" Type="Boolean" Nullable="false" />
+          <Property Name="Answer26" Type="Boolean" Nullable="false" />
+          <Property Name="Answer27" Type="Boolean" Nullable="false" />
+          <Property Name="Answer28" Type="Boolean" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Results" Relationship="Self.FK_AnswerTable_Results" FromRole="AnswerTable" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PCName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeData" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Result" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MassiveAnswers" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AnswerTable" Relationship="Self.FK_AnswerTable_Results" FromRole="Results" ToRole="AnswerTable" />
+        </EntityType>
+        <Association Name="FK_AnswerTable_Results">
+          <End Role="Results" Type="Self.Results" Multiplicity="1" />
+          <End Role="AnswerTable" Type="Self.AnswerTable" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Results">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AnswerTable">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SocionicEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AnswerTable" EntityType="Self.AnswerTable" />
+          <EntitySet Name="Results" EntityType="Self.Results" />
+          <AssociationSet Name="FK_AnswerTable_Results" Association="Self.FK_AnswerTable_Results">
+            <End Role="Results" EntitySet="Results" />
+            <End Role="AnswerTable" EntitySet="AnswerTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SocionicModelContainer" CdmEntityContainer="SocionicEntities">
+          <EntitySetMapping Name="AnswerTable">
+            <EntityTypeMapping TypeName="SocionicModel.AnswerTable">
+              <MappingFragment StoreEntitySet="AnswerTable">
+                <ScalarProperty Name="Answer1" ColumnName="Answer1" />
+                <ScalarProperty Name="Answer2" ColumnName="Answer2" />
+                <ScalarProperty Name="Answer3" ColumnName="Answer3" />
+                <ScalarProperty Name="Answer4" ColumnName="Answer4" />
+                <ScalarProperty Name="Answer5" ColumnName="Answer5" />
+                <ScalarProperty Name="Answer6" ColumnName="Answer6" />
+                <ScalarProperty Name="Answer7" ColumnName="Answer7" />
+                <ScalarProperty Name="Answer8" ColumnName="Answer8" />
+                <ScalarProperty Name="Answer9" ColumnName="Answer9" />
+                <ScalarProperty Name="Answer10" ColumnName="Answer10" />
+                <ScalarProperty Name="Answer11" ColumnName="Answer11" />
+                <ScalarProperty Name="Answer12" ColumnName="Answer12" />
+                <ScalarProperty Name="Answer13" ColumnName="Answer13" />
+                <ScalarProperty Name="Answer14" ColumnName="Answer14" />
+                <ScalarProperty Name="Answer15" ColumnName="Answer15" />
+                <ScalarProperty Name="Answer16" ColumnName="Answer16" />
+                <ScalarProperty Name="Answer17" ColumnName="Answer17" />
+                <ScalarProperty Name="Answer18" ColumnName="Answer18" />
+                <ScalarProperty Name="Answer19" ColumnName="Answer19" />
+                <ScalarProperty Name="Answer20" ColumnName="Answer20" />
+                <ScalarProperty Name="Answer21" ColumnName="Answer21" />
+                <ScalarProperty Name="Answer22" ColumnName="Answer22" />
+                <ScalarProperty Name="Answer23" ColumnName="Answer23" />
+                <ScalarProperty Name="Answer24" ColumnName="Answer24" />
+                <ScalarProperty Name="Answer25" ColumnName="Answer25" />
+                <ScalarProperty Name="Answer26" ColumnName="Answer26" />
+                <ScalarProperty Name="Answer27" ColumnName="Answer27" />
+                <ScalarProperty Name="Answer28" ColumnName="Answer28" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="SocionicModel.Results">
+              <MappingFragment StoreEntitySet="Results">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PCName" ColumnName="PCName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="TimeData" ColumnName="TimeData" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="MassiveAnswers" ColumnName="MassiveAnswers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
