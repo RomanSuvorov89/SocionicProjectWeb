@@ -42,10 +42,10 @@ namespace SocionicProjectWeb.Controllers
 
         public ActionResult SecretPage()
         {
-            SocionicEntities db = new SocionicEntities();
-            
+            using (SocionicEntities db = new SocionicEntities())
+            {
                 return View(db.Results.ToList());
-            
+            }
         }
     }
 }
