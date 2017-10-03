@@ -12,7 +12,7 @@
             <p style="margin-bottom: 3%">Вопрос {{numberQuest+1}} из 28</p>
             <button ng-click="checkAnswer(1)" type="button" class="btn {{Style[0]}} btn-lg" style="width: 45%">{{firstValue[numberQuest]}}</button>
             <button ng-click="checkAnswer(0)" type="button" class="btn {{Style[0]}} btn-lg" style="width: 45%">{{secondValue[numberQuest]}}</button>
-            <div ng-repeat="array in arrayAnswers track by $index">
+            <div ng-repeat="array in groupOfAnswers track by $index">
                 {{array}}
             </div>
         </div>

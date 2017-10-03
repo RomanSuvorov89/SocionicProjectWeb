@@ -13,34 +13,34 @@
             "тихий", "спокойный ", "сосредоточенность", "сохранение энергии", "ориентированный внутрь себя", "переживать в себе", "хладнокровный"
         ];
         $scope.Style = ["btn-primary", "btn-info", "btn-success", "btn-warning"];
-        $scope.arrayAnswers = [0, 0, 0, 0];
-        $scope.Answers = [];
+        $scope.groupOfAnswers = [0, 0, 0, 0];
+        $scope.arrayAnswers = [];
         $scope.numberQuest = 0;
-        $scope.numberAnswers = 0;
+        $scope.numberGroup = 0;
 
         $scope.checkAnswer = function (buttonInput) {
-            $scope.Answers[$scope.numberQuest] = buttonInput;
-            $scope.arrayAnswers[$scope.numberAnswers] += buttonInput;
+			$scope.arrayAnswers[$scope.numberQuest] = buttonInput;
+			$scope.groupOfAnswers[$scope.numberGroup] += buttonInput;
             $scope.numberQuest++;
             if (($scope.numberQuest % 7) === 0) {
                 $scope.Style.splice(0, 1);
-                $scope.numberAnswers++;
+				$scope.numberGroup++;
             }
             if ($scope.numberQuest === 28) {
                 document.getElementById("Quests").remove();
-                testResult($scope.arrayAnswers, $scope.Answers);
+				testResult($scope.groupOfAnswers, $scope.arrayAnswers);
             }
         }
 
     });
 
 
-function testResult(arrayAnswers, Answers) {
-    dateObj = new Date();
+function testResult(groupOfAnswers, arrayAnswers) {
+    currentTime = new Date();
     $.ajax({
         type: 'POST',
         url: '/Home/Result',
-        data: { arrayAnswers, Answers, dateObj },
+		data: { groupOfAnswers, arrayAnswers, currentTime },
         dataType: 'json',
         success:function () { alert(); }
     });

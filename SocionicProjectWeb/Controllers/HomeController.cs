@@ -30,22 +30,23 @@ namespace SocionicProjectWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Result(int[] arrayAnswers, int[] answers, string dateObj)
+        public ActionResult Result(int[] groupOfAnswers, int[] arrayAnswers, string currentTime)
         {
-            var answerBools = answers.Select(i => i != 0).ToArray();
+            var answerBools = arrayAnswers.Select(i => i != 0).ToArray();
             using (SocionicEngine socionicEngine = new SocionicEngine())
             {
-                socionicEngine.SaveToDB(arrayAnswers, answerBools, dateObj);
+                socionicEngine.SaveToDB(groupOfAnswers, answerBools, currentTime);
             }
             return RedirectToAction("SecretPage");
         }
 
         public ActionResult SecretPage()
         {
-            using (SocionicEntities db = new SocionicEntities())
-            {
-                return View(db.Results.ToList());
-            }
+            List<Results> results;
+            SocionicEntities db = new SocionicEntities();
+            results = db.Results.ToList();
+                return View(results);
+
         }
     }
 }
