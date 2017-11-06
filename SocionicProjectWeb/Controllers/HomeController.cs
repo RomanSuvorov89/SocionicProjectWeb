@@ -18,14 +18,12 @@ namespace SocionicProjectWeb.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -37,16 +35,14 @@ namespace SocionicProjectWeb.Controllers
             {
                 socionicEngine.SaveToDB(groupOfAnswers, answerBools, currentTime);
             }
-            return RedirectToAction("SecretPage");
+            return Redirect("SecretPage");
         }
 
         public ActionResult SecretPage()
         {
-            List<Results> results;
-            SocionicEntities db = new SocionicEntities();
-            results = db.Results.ToList();
-                return View(results);
-
+	        SocionicEntities db = new SocionicEntities();
+            var results = db.Results.ToList();
+            return View(results);
         }
     }
 }

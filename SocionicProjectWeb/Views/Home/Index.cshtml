@@ -6,17 +6,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
     <script src="~/Scripts/ang.js" asp-append-version="true"></script>
 </head>
-<body>
-    <div class="btn-group" id="Quests" style="text-align: center; margin-top: 10%; margin-bottom: 10%">
-        <div ng-controller="TestCtrl" class="btn-group-justified" data-toggle="buttons">
-            <p style="margin-bottom: 3%">Вопрос {{numberQuest+1}} из 28</p>
-            <button ng-click="checkAnswer(1)" type="button" class="btn {{Style[0]}} btn-lg" style="width: 45%">{{firstValue[numberQuest]}}</button>
-            <button ng-click="checkAnswer(0)" type="button" class="btn {{Style[0]}} btn-lg" style="width: 45%">{{secondValue[numberQuest]}}</button>
-            <div ng-repeat="array in groupOfAnswers track by $index">
-                {{array}}
-            </div>
-        </div>
-    </div>
+<body style="text-align: center">
+<div id="Quests" style="margin-top: 10%; margin-bottom: 10%">
+	<div ng-controller="TestCtrl" data-toggle="buttons">
+		<div>
+			<a style="margin-bottom: 3%; font-style: italic; font-weight: bold; font-size: 18px" class="btn btn-outline-primary disabled">
+				Вопрос {{numberQuest+1}} из 28
+			</a>
+		</div>
+		<div class="btn-group-lg">
+			<button type="button" ng-click="checkAnswer(1)" class="btn {{Style[0]}}" style="width: 45%">{{firstValue[numberQuest]}}</button>
+			<button type="button" ng-click="checkAnswer(0)" class="btn {{Style[0]}}" style="width: 45%">{{secondValue[numberQuest]}}</button>
+		</div>
+		<div ng-repeat="array in groupOfAnswers track by $index">
+			{{array}}
+		</div>
+	</div>
+</div>
 
     <div id="resultInfo"></div>
 </body>
