@@ -1,35 +1,43 @@
 ﻿@{
-     ViewBag.Title = "Home Page";
+	ViewBag.Title = "Home Page";
 }
 <html ng-app="AngularSocionic">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
-    <script src="~/Scripts/ang.js" asp-append-version="true"></script>
+	<script type="text/javascript" src="http://vk.com/js/api/openapi.js?150"></script>
+	<script type="text/javascript">
+		VK.init({ apiId: 6261119 });
+	</script>
+	
+	<script src="~/Scripts/angular/AngularTest.js" asp-append-version="true"></script>
 </head>
 <body style="text-align: center">
-<div id="Quests" style="margin-top: 10%; margin-bottom: 10%">
-	<div ng-controller="TestCtrl" data-toggle="buttons">
-		<div>
-			<a style="margin-bottom: 3%; font-style: italic; font-weight: bold; font-size: 18px" class="btn btn-outline-primary disabled">
-				Вопрос {{numberQuest+1}} из 28
-			</a>
+	<div class="row" style="margin-top: 5%; margin-bottom: 5%">
+		<div class="col-sm-12" id="Quests">
+			<div ng-controller="TestingController" data-toggle="buttons">
+				<div>
+					<p class="text-success" style="font-size: 20px; font-style: oblique"><strong>Выберите тот вариант ответа из предложенных, что больше характеризует Вас.</strong></p>
+					<a style="margin-bottom: 3%; font-style: italic; font-weight: bold; font-size: 18px" class="btn disabled">
+						Вопрос {{numberQuest+1}} из 28
+					</a>
+				</div>
+				<div class="btn-group-lg">
+					<button type="button" ng-click="checkAnswer(1)" class="btn {{Style[numberStyle]}}" style="width: 45%">{{firstValue[numberQuest]}}</button>
+					<button type="button" ng-click="checkAnswer(0)" class="btn {{Style[numberStyle]}}" style="width: 45%">{{secondValue[numberQuest]}}</button>
+				</div>
+				<div ng-repeat="array in groupOfAnswers track by $index" style="display: none">
+					{{array}}
+				</div>
+			</div>
 		</div>
-		<div class="btn-group-lg">
-			<button type="button" ng-click="checkAnswer(1)" class="btn {{Style[0]}}" style="width: 45%">{{firstValue[numberQuest]}}</button>
-			<button type="button" ng-click="checkAnswer(0)" class="btn {{Style[0]}}" style="width: 45%">{{secondValue[numberQuest]}}</button>
-		</div>
-		<div ng-repeat="array in groupOfAnswers track by $index">
-			{{array}}
-		</div>
+		<div class="col-sm-12" id="resultInfo"></div>
 	</div>
-</div>
 
-    <div id="resultInfo"></div>
+	<div id="vk_auth"></div>
+
 </body>
 </html>
-<script>
 
+<script type="text/javascript">
+	VK.Widgets.Auth("vk_auth", { "onAuth": "function(data) {alert('user '+data['uid']+' authorized');}" });
 </script>
-
-
 

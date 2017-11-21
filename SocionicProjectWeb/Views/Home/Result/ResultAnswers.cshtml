@@ -1,0 +1,60 @@
+﻿@model SocionicProjectWeb.Models.ResultAnswers
+
+
+<div class="jumbotron btn-group result" style="text-align: center"></div>
+
+
+<button class="btn btn-danger" onclick="back()">Назад</button>
+<button class="btn btn-primary" onclick="reload(@Model.id)">Перезагрузить страницу</button>
+<button class="btn btn-success" onclick="create()" style="display: none">Перерисовать таблицу</button>
+
+<script>
+	var currentStyle;
+	$(document).ready(function() {
+		create();
+	});
+	function back() {
+		$("#myResultAnswers").hide();
+		$("#myResultTable").show();
+	}
+	function create() {
+		currentStyle = 0;
+		$('.result').empty();
+		var boolArray = [];
+		@foreach (var data in Model.Answers)
+		{
+			@:boolArray.push("@data");
+		}
+		for (var i = 0; i < 28; i++) {
+			createButtons(boolArray[i],i);
+		}
+	};
+	function reload(id) {
+		$("#myResult").hide();
+		$.ajax({
+			type: 'GET',
+			url: '/Home/ResultAnswers',
+			data: { id },
+			success: function (result) {
+				$("#myResult").html(result).show();
+				$("#faLoad").hide();
+			}
+		});
+	}
+	function createButtons(answer, numberAnswer) {
+		var resultButton;
+		if ((numberAnswer % 7 === 0) && (numberAnswer !== 0)) {
+			currentStyle++;
+			console.log(currentStyle + ' ' + numberAnswer);
+		}
+		if (answer === 'True') {
+			resultButton =
+				'<button type="button" class="btn ' + Style[currentStyle] +'" style="width:50%">'+firstValue[numberAnswer]+'</button> <button type="button" class="btn btn-default" style="width:50%">'+secondValue[numberAnswer]+'</button>';
+		} else {
+			resultButton =
+				'<button type="button" class="btn btn-default" style="width:50%">'+firstValue[numberAnswer]+'</button> <button type="button" class="btn '+ Style[currentStyle] +'" style="width:50%">'+secondValue[numberAnswer]+'</button>';
+		}
+		var buttonGroup = '<div class="btn-group-justified" data-toggle="buttons">'+resultButton+'</div>';
+		$(".result").append(buttonGroup);
+	}
+</script>

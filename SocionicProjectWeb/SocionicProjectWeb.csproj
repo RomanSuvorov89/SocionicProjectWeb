@@ -158,10 +158,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TypeController.cs" />
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>SocionicDBConnect.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\SocionicEngine.cs" />
+    <Compile Include="Models\ResultAnswers.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\DBSaveContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results.cs">
       <DependentUpon>SocionicDBConnect.tt</DependentUpon>
@@ -183,22 +189,96 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\PngModelA\lii.png" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\romansuvorov - Web Deploy.pubxml" />
+    <Content Include="Scripts\angular\AngularAnswers.js" />
+    <Content Include="Scripts\angular\AngularData.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.bootstrap.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.bootstrap.min.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.bootstrap4.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.bootstrap4.min.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.dataTables.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.dataTables.min.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.foundation.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.foundation.min.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.jqueryui.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.jqueryui.min.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.semanticui.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\css\autoFill.semanticui.min.css" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.semanticui.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\autoFill.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\AutoFill-2.2.2\js\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.bootstrap4.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.foundation.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.foundation.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.jqueryui.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.jqueryui.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.semanticui.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\dataTables.semanticui.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\jquery.dataTables.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\css\jquery.dataTables.min.css" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\images\sort_asc.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\images\sort_asc_disabled.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\images\sort_both.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\images\sort_desc.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\images\sort_desc_disabled.png" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\DataTables-1.10.16\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\datatables.css" />
+    <Content Include="Scripts\DataTables\datatables.js" />
+    <Content Include="Scripts\DataTables\datatables.min.css" />
+    <Content Include="Scripts\DataTables\datatables.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -207,14 +287,9 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\PublishProfiles\Socionic - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
-    <Content Include="Scripts\ang.js" />
+    <Content Include="Scripts\angular\AngularTest.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -233,6 +308,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Scripts.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -247,7 +323,9 @@
       <DependentUpon>SocionicDBConnect.edmx</DependentUpon>
       <LastGenOutput>SocionicDBConnect.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -268,15 +346,35 @@
     <Content Include="SocionicDBConnect.edmx.diagram">
       <DependentUpon>SocionicDBConnect.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\Home\SecretPage.cshtml" />
+    <Content Include="Views\Home\ResultPage.cshtml" />
+    <Content Include="Views\Type\lii.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Type\ese.cshtml" />
+    <Content Include="Views\Type\ili.cshtml" />
+    <Content Include="Views\Type\see.cshtml" />
+    <Content Include="Views\Type\iei.cshtml" />
+    <Content Include="Views\Type\sle.cshtml" />
+    <Content Include="Views\Type\eie.cshtml" />
+    <Content Include="Views\Type\lse.cshtml" />
+    <Content Include="Views\Type\ile.cshtml" />
+    <Content Include="Views\Type\sei.cshtml" />
+    <Content Include="Views\Type\iee.cshtml" />
+    <Content Include="Views\Type\eii.cshtml" />
+    <Content Include="Views\Type\sli.cshtml" />
+    <Content Include="Views\Type\lsi.cshtml" />
+    <Content Include="Views\Type\lie.cshtml" />
+    <Content Include="Views\Type\esi.cshtml" />
+    <Content Include="Views\Home\Result\ResultTable.cshtml" />
+    <Content Include="Views\Home\Result\ResultAnswers.cshtml" />
+    <Content Include="Views\Type\Types.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

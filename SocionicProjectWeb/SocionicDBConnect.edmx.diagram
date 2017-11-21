@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="SocionicModel.AnswerTable" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SocionicModel.Results" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
         <AssociationConnector Association="SocionicModel.FK_AnswerTable_Results" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SocionicModel.database_firewall_rules" Width="1.875" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,66 @@
+﻿@model System.Collections.Generic.List<SocionicProjectWeb.Results>
+
+<ul class="nav nav-tabs" role="tablist" id='myTabs' style="display: none">
+	<li role="presentation" class="active"><a href="#Results" aria-controls="home" role="tab" data-toggle="tab">Результаты</a></li>
+</ul>
+<div class="tab-content jumbotron" id="panel">
+	<div role="tabpanel" class="tab-pane active" id="Results">
+		<div class="row">
+			<table class="table table-striped table-hover " id="dataTable">
+				<thead>
+				<tr>
+					<th>#</th>
+					<th>Устройство</th>
+					<th>Инфо об устройстве</th>
+					<th>Дата</th>
+					<th>Результат</th>
+					<th>Ответы</th>
+					<th>Посмотреть результаты</th>
+				</tr>
+				</thead>
+				<tbody>
+				@foreach (var info in Model)
+				{
+
+					<tr>
+						<td>@info.ID</td>
+						<td>@info.PCName</td>
+						<td>@info.LoginName</td>
+						<td>@info.TimeData</td>
+						<td>@info.Result</td>
+						<td>@info.MassiveAnswers</td>
+						@if (info.AnswerTable != null)
+						{
+							<td>
+								<button type="button" class="btn btn-success btn-lg" aria-label="Left Align" onclick="checkAnswers('@info.ID')">
+									<span class="fa fa-caret-square-o-right" aria-hidden="true"></span>
+								</button>
+							</td>
+						}
+						else
+						{
+							<td>
+								<button type="button" disabled="" class="btn btn-default btn-danger btn-lg" aria-label="Left Align">
+									<span class="fa fa-times" aria-hidden="true"></span>
+								</button>
+							</td>
+						}
+
+					</tr>
+
+				}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function () {
+		$('#dataTable').DataTable({
+			"language": {
+				"url": "/content/russian.json"
+			}
+		});
+	});
+</script>

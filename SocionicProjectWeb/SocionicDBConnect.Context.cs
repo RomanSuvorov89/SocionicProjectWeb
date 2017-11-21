@@ -18,7 +18,6 @@ namespace SocionicProjectWeb
         public SocionicEntities()
             : base("name=SocionicEntities")
         {
-          //  this.Database.Connection.ConnectionString = "User ID=RuSh48;Password=RuSh25121989";
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -28,5 +27,6 @@ namespace SocionicProjectWeb
     
         public virtual DbSet<AnswerTable> AnswerTable { get; set; }
         public virtual DbSet<Results> Results { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Результаты тестов";
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="~/Content/font-awesome.css" rel="stylesheet"/>
+	<script src="~/Scripts/DataTables/datatables.min.js"></script>
+
+	<title>
+		Result
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="faLoad" style="width: 800px; height: 600px">
+	<div style="text-align: center; margin-top: 20%">
+		<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+		<span class="sr-only">Loading...</span>
+	</div>
+</div>
+
+<div id="myResultTable"></div>
+<div id="myResultAnswers"></div>
+
+</body>
+</html>
+
+<script>
+
+	function HideAllResult() {
+		$("#myResultAnswers").hide();
+		$("#myResultTable").hide();
+		$("#faLoad").show();
+	}
+
+	window.onload = function () {
+		HideAllResult();
+		$.ajax({
+			type: 'GET',
+			url: '/Home/ResultTable',
+			success: function (result) {
+				$("#myResultTable").html(result).show();
+				$("#faLoad").hide();
+			}
+		});
+	}
+
+	function checkAnswers(id) {
+		HideAllResult();
+		$.ajax({
+			type: 'GET',
+			url: '/Home/ResultAnswers',
+			data: { id },
+			success: function (result) {
+				$("#myResultAnswers").html(result).show();
+				$("#faLoad").hide();
+			}
+		});
+	}
+</script>
