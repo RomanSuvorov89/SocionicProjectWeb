@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,13 @@ namespace SocionicProjectWeb.Controllers
 
 	    public ActionResult TypeResult(string myType)
 	    {
-		    return View(myType);
+		    var cookie = new HttpCookie("socionic")
+		    {
+			    Name = "socionic",
+			    Value = myType
+		    };
+			Response.SetCookie(cookie);
+		    return Json(new {newurl = Url.Action(myType)}, JsonRequestBehavior.AllowGet);
 	    }
 
 		public ActionResult Lii()

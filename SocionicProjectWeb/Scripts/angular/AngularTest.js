@@ -26,6 +26,8 @@ myAngular.controller("TestingController", function ($scope) {
 
 
 function testResult(groupOfAnswers, arrayAnswers) {
+	$("#Quests").hide();
+	$("#resultload").show();
 	var currentTime = new Date();
 	var userInfo = navigator.appVersion;
 	var device;
@@ -43,11 +45,12 @@ function testResult(groupOfAnswers, arrayAnswers) {
 		Device: device
 	};
 	$.ajax({
-		type: 'POST',
-		url: '/Home/Result',
+		type: "POST",
+		url: "/Home/Result",
 		data: { objectResult },
-		success: function (result) {
-			$("#resultInfo").html(result).show();
+		success: function (data) {
+			console.log(data.newurl);
+			window.location = data.newurl;
 		}
 	});
 

@@ -11,6 +11,7 @@
 	<script src="~/Scripts/angular/AngularData.js" asp-append-version="true"></script>
 	<script src="~/Scripts/jquery-3.2.1.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<link href="~/Content/font-awesome.css" rel="stylesheet" />
 
 	
 	@Styles.Render("~/Content/css")
@@ -64,8 +65,21 @@
 	</div>
 </div>
 <div class="container body-content">
+	<header>
+		@if (Request.Cookies["socionic"] != null)
+		{
+			<div class="navbar-fixed-bottom" style="text-align: center; background-color: lightgreen; padding: 0px">
+				<h3>Ваш социотип:
+					<a href="@Url.Action(Request.Cookies["socionic"].Value, "Type")">
+						<strong class="text-primary" style="text-decoration: underline">@Request.Cookies["socionic"].Value</strong>
+					</a>
+				</h3>
+				<h6 class="text-primary">На основе последнего теста</h6>
+			</div>
+		}
+	</header>
 	@RenderBody()
-	<hr />
+	<hr/>
 	<footer>
 		<p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
 	</footer>

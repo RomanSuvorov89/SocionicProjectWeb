@@ -11,27 +11,34 @@
 	<script src="~/Scripts/angular/AngularTest.js" asp-append-version="true"></script>
 </head>
 <body style="text-align: center">
-	<div class="row" style="margin-top: 5%; margin-bottom: 5%">
-		<div class="col-sm-12" id="Quests">
-			<div ng-controller="TestingController" data-toggle="buttons">
-				<div>
-					<p class="text-success" style="font-size: 20px; font-style: oblique"><strong>Выберите тот вариант ответа из предложенных, что больше характеризует Вас.</strong></p>
-					<a style="margin-bottom: 3%; font-style: italic; font-weight: bold; font-size: 18px" class="btn disabled">
-						Вопрос {{numberQuest+1}} из 28
-					</a>
-				</div>
-				<div class="btn-group-lg">
-					<button type="button" ng-click="checkAnswer(1)" class="btn {{Style[numberStyle]}}" style="width: 45%">{{firstValue[numberQuest]}}</button>
-					<button type="button" ng-click="checkAnswer(0)" class="btn {{Style[numberStyle]}}" style="width: 45%">{{secondValue[numberQuest]}}</button>
-				</div>
-				<div ng-repeat="array in groupOfAnswers track by $index" style="display: none">
-					{{array}}
-				</div>
+<div class="row" style="margin-top: 5%; margin-bottom: 5%">
+	<div class="col-sm-12" id="Quests">
+		<div ng-controller="TestingController" data-toggle="buttons">
+			<div>
+				<p class="text-success" style="font-size: 20px; font-style: oblique"><strong>Выберите тот вариант ответа из предложенных, что больше характеризует Вас.</strong></p>
+				<a style="margin-bottom: 3%; font-style: italic; font-weight: bold; font-size: 18px" class="btn disabled">
+					Вопрос {{numberQuest+1}} из 28
+				</a>
+			</div>
+			<div class="btn-group-lg">
+				<button type="button" ng-click="checkAnswer(1)" class="btn {{Style[numberStyle]}}" style="width: 45%">{{firstValue[numberQuest]}}</button>
+				<button type="button" ng-click="checkAnswer(0)" class="btn {{Style[numberStyle]}}" style="width: 45%">{{secondValue[numberQuest]}}</button>
+			</div>
+			<div ng-repeat="array in groupOfAnswers track by $index" style="display: none">
+				{{array}}
 			</div>
 		</div>
-		<div class="col-sm-12" id="resultInfo"></div>
 	</div>
+</div>
 
+<div class="col-sm-12" id="resultload">
+	<div id="faLoad" style="width: 800px; height: 600px">
+		<div style="text-align: center; margin-top: 20%">
+			<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+</div>
 	<div id="vk_auth"></div>
 
 </body>
@@ -39,5 +46,6 @@
 
 <script type="text/javascript">
 	VK.Widgets.Auth("vk_auth", { "onAuth": "function(data) {alert('user '+data['uid']+' authorized');}" });
+	$("#resultload").hide();
 </script>
 
